@@ -1,68 +1,38 @@
 var NameBox = React.createClass({
   handleChange: function(){
     this.props.onUserInput(
-        this.refs.last.getDOMNode().value,
-        this.refs.first.getDOMNode().value
+        this.refs.name.getDOMNode().value
     );
   },
 
-  getInitialState: function(){
-    return {value: ""};
-  },
-
   render: function() {
-    var isLast = this.props.isLast;
-    var value = "";
-    if(isLast){
-      value = this.props.last
-    } else {
-      value = this.props.first
-    }
     return (
       <form>
-        <input type="text" value={this.props.last} ref="lastName" onChange={this.handleChange}/> 
+        <input type="text" value={this.props.name} ref="name" onChange={this.handleChange}/> 
       </form>
     );
   }
 });
 
 var NameEval = React.createClass({
-
   getInitialState: function(){
     return {
-      first: "",
-      last: ""
+      name: ''
     };
   },
 
-  handleUserInput: function(first, last){
+  handleUserInput: function(name){
     this.setState({
-      first: first,
-      last: last
+      name: name
     });
   },
 
   render: function(){
-    var first = this.state.first;
-    var last = this.state.last;
-    var message = "";
-    if((first == "Bryan" && last == "Holdt") || 
-        (first == "Jordan" && last == "Dashel")){
-      message = first + " " + last + " is awesome!"
-    } else {
-      message = first + " " + last + " is not awesome"
-    }
     return (
       <div>
-        <h2>{message}</h2>  
+        <h2>{getMessage(this.state.name)}</h2>
         <NameBox 
-          text={this.state.first}
-          isLast=""
-          onUserInput={this.handleUserInput}
-        />
-        <NameBox
-          text={this.state.first}
-          isLast="true"
+          text={this.state.name}
           onUserInput={this.handleUserInput}
         />
       </div>
@@ -70,12 +40,23 @@ var NameEval = React.createClass({
   }
 });
 
+getMessage = function(name){
+  var message = "";
+  if((name == "Bryan Holdt") || 
+      (name == "Jordan Dashel")){
+    message = name + " is awesome!"
+  } else {
+    message = name + " is not awesome"
+  }
+  return message;
+}
+
 var Container = React.createClass({
   render: function(){
     return(
       <div>
         <h1>Awesome?</h1>
-        <NameEval firstName="Jordan" lastName="Dashel" />
+        <NameEval />
       </div>
     );
   }

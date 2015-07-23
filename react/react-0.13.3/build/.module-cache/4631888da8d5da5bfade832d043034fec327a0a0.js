@@ -28,9 +28,18 @@ var NameEval = React.createClass({displayName: "NameEval",
   },
 
   render: function(){
+    var name = this.state.name;
+    var message = "";
+    if((name == "Bryan Holdt") || 
+        (name == "Jordan Dashel")){
+      message = name + " is awesome!"
+    } else {
+      message = name + " is not awesome"
+    }
     return (
       React.createElement("div", null, 
-        React.createElement("h2", null, getMessage(this.state.name)), 
+        React.createElement("h2", null, this.state.name, " is maybe awesome"), 
+        React.createElement("h2", null, message), 
         React.createElement(NameBox, {
           text: this.state.name, 
           onUserInput: this.handleUserInput}
@@ -39,17 +48,6 @@ var NameEval = React.createClass({displayName: "NameEval",
     )
   }
 });
-
-getMessage = function(name){
-  var message = "";
-  if((name == "Bryan Holdt") || 
-      (name == "Jordan Dashel")){
-    message = name + " is awesome!"
-  } else {
-    message = name + " is not awesome"
-  }
-  return message;
-}
 
 var Container = React.createClass({displayName: "Container",
   render: function(){
