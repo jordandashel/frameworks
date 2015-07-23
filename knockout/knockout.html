@@ -1,4 +1,13 @@
-First Name: <input type="text" data-bind="value: firstName, valueUpdate: 'afterkeydown'"/>
-Last Name: <input type="text" data-bind="value: lastName, valueUpdate: 'afterkeydown'"/>
-<br />
-<span id ="output"><span id="nametxt" data-bind="text: fullName()"></span> is awesome?</span>
+<html>
+  <head>
+    <title>Awesome knockout!</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-debug.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js"></script>
+  </head>
+  <body>
+    First Name: <input type="text" data-bind="value: firstName, valueUpdate: 'afterkeydown'"/>
+    Last Name: <input type="text" data-bind="value: lastName, valueUpdate: 'afterkeydown'"/>
+    <br />
+    <span id ="output"><span id="nametxt" data-bind="text: fullName()"></span> is awesome?</span>
+  </body>
+</html>
